@@ -1,3 +1,2 @@
 venv
-pyspark_activities/resources/clientes.csv
-pyspark_activities/resources/ordenes.csv
+pyspark_activities/resources/*.csv
