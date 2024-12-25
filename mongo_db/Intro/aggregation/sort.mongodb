@@ -1,0 +1,8 @@
+use( 'sample_training')
+
+// 1: acendente
+// -1 desdendente
+// skip offset
+db.zips.find(
+    {pop:{$gt:100}}
+).sort({pop:1}).limit(10).skip(10)

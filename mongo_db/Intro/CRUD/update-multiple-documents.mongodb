@@ -1,0 +1,29 @@
+use("sample_training")
+
+db.zips.find({
+    city:'CLEVELAND'
+}).count()
+
+// Incrementamos un valor
+// db.zips.updateMany(
+//     {city:'CLEVELAND'},
+//     {$inc:{pop:1}}
+// )
+
+// agregamos un atributo
+// db.zips.updateMany(
+//     {city:'CLEVELAND'},
+//     {$set:{my_field:'hola mundo'}}
+// )
+
+// Le cambiamos el nombre a el campo
+//db.zips.updateMany(
+//    {city:'CLEVELAND'},
+//    {$rename:{my_field:'greet'}}
+//)
+
+// Le borramos un campo a documentos
+db.zips.updateMany(
+    {city:'CLEVELAND'},
+    {$unset:{greet:''}}
+)

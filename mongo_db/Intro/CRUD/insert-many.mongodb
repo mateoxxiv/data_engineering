@@ -1,0 +1,31 @@
+// Usa ó crea una base de datos.
+use("platzi_store")
+
+// vaciar toda la base de datos
+db.productos.drop()
+
+// Insertar varios registros
+db.productos.insertMany([
+    {
+        _id:1,
+        nombre:'Producto 1',
+        precio: 2000
+    },
+    {
+        _id:2,
+        nombre:'Producto 2',
+        precio: 200
+    },
+    {
+        _id:1,
+        nombre:'Producto 3',
+        precio: 10000
+    }
+], {
+    ordered:false
+})
+// Con ordered podemos evitar que se genere un error por en toda la operación por un registro que está errado
+// Si le decimos que nuestros nuevos documentos no tienen un orden crea todos los que no generén conflictos
+
+// imprimir en consola
+db.productos.find()

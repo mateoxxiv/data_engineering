@@ -1,0 +1,77 @@
+use("platzi_store")
+
+db.inventory.drop()
+
+db.inventory.insertMany([
+  { _id: 1, item: { name: "ab", code: "123", description : "Single line description."    }, qty: 15, tags: [ "school", "book", "bag", "headphone", "appliance" ] },
+  { _id: 2, item: { name: "cd", code: "123", description : "First line\nSecond line"     }, qty: 20, tags: [ "appliance", "school", "book" ] },
+  { _id: 3, item: { name: "ij", code: "456", description : "Many spaces before     line" }, qty: 25, tags: [ "school", "book" ] },
+  { _id: 4, item: { name: "xy", code: "456", description : "Multiple\nline description"  }, qty: 30, tags: [ "electronics", "school" ] },
+  { _id: 5, item: { name: "mn", code: "000" }, qty: 20, tags: [ "appliance", "school" ] },
+])
+
+db.survey.drop();
+
+db.survey.insertMany([
+  {
+    _id: 1,
+    results: [
+      { product: "abc", score: 10 },
+      { product: "xyz", score: 5 },
+    ],
+  },
+  {
+    _id: 2,
+    results: [
+      { product: "abc", score: 8 },
+      { product: "xyz", score: 7 },
+    ],
+  },
+  {
+    _id: 3,
+    results: [
+      { product: "abc", score: 7 },
+      { product: "xyz", score: 8 },
+    ],
+  },
+  {
+    _id: 4,
+    results: [
+      { product: "abc", score: 7 },
+      { product: "def", score: 8 },
+    ],
+  },
+]);
+
+// Que un nuemro este dentro de un array
+db.inventory.find(
+    {qty:{$in:[20,25]}}
+)
+
+// Bucar docuemtos que en una lista contengan un valor
+db.inventory.find(
+    {tags:{$in:['book','electronics']}}
+)
+
+// Bucar docuemtos que en una lista NO contengan un valor
+db.inventory.find(
+    {tags:{$nin:['book','electronics']}}
+)
+
+// Filtrar por doucmentos con con un array que contenga un valor
+db.inventory.find({tags:'book'})
+
+// Filtrar por doucmentos con con un array que contenga mas de un valor ( en el mismo orden proporcionado )
+db.inventory.find({tags:['book', 'school']})
+
+// Filtrar por doucmentos con con un array que contenga mas de un valor sin importar su orden
+db.inventory.find({tags:{$all:['book', 'school']}})
+
+// Filtrar por doucmentos con con un array que tenga x numerode elementos
+db.inventory.find({tags:{$size:2}})
+
+// cuando tenemos un array con una estructura y necesitamos ser mas especificos,
+// Si queremos filtrar documentos en los que tengamos una lista y queramosn obtenerlos los que cumplen con un patrojn en especifico
+db.survey.find(
+    {results:{$elemMatch:{product:'xyz', score:{$gte:7}}}}
+)

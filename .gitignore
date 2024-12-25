@@ -1,2 +1,3 @@
 venv
 pyspark/resources/*.csv
+mongo_db/mongo_data

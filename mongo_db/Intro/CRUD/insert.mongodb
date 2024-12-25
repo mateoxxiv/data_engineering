@@ -1,0 +1,12 @@
+// Usa ó crea una base de datos.
+use("platzi_store")
+
+// Cuando definimos db.products si la colección no está la crea
+
+// Inserta un registro en la colección
+// Le podemos asignar el _id que es el identificador unico del documento ... no podemos crear documentos con el mismo id
+db.productos.insertOne({
+    _id: 1,
+    name: "Product 1",
+    price: 1200
+})

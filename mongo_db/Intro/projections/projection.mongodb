@@ -1,0 +1,7 @@
+use('sample_training')
+
+// Seleccionamos los campos que queremos obtener en nuestras consultas
+db.trips.find(
+    {},
+    {tripduration:1, usertype:1, _id:0}
+)

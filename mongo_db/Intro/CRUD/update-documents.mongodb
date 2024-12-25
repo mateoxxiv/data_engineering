@@ -1,0 +1,84 @@
+
+// $currentDate: Sets the field value to the current date
+// $inc: Increments the field value
+// $rename: Renames the field
+// $set: Sets the value of a field
+// $unset: Removes the field from the document
+// $addToSet: Adds distinct elements to an array
+// $pop: Removes the first or last element of an array
+// $pull: Removes all elements from an array that match the query
+// $push: Adds an element to an array
+// $in: Search for elements into a array
+
+// Usa ó crea una base de datos.
+use("platzi_store")
+
+// vaciar toda la base de datos
+db.productos.drop()
+
+// Insertar varios registros
+db.productos.insertMany([
+    {
+        _id:1,
+        nombre:'Producto 1',
+        precio: 2000
+    },
+    {
+        _id:2,
+        nombre:'Producto 2',
+        precio: 200
+    },
+    {
+        _id:3,
+        nombre:'Producto 3',
+        precio: 10000
+    },
+    {
+        nombre:'Producto 3',
+        precio: 10000
+    }
+], {
+    ordered:false
+})
+// Con ordered podemos evitar que se genere un error por en toda la operación por un registro que está errado
+// Si le decimos que nuestros nuevos documentos no tienen un orden crea todos los que no generén conflictos
+
+// Para consultar un documento  cuyo id fie generado por mongo
+// => _id : ObjectId("fkkffkkfkfkkfpe")
+// Actualizar los valores de un documento
+db.productos.updateOne(
+    {_id:1},
+    {
+        $set: {
+            nombre:'Poducto 0',
+            precio: 2200,
+            tags:['a', 'b', 'c']
+        }
+    }
+)
+
+// Incrementar un valor numerico
+db.productos.updateOne(
+    {_id:1},
+    {
+        $inc: {
+            precio: 100,
+        }
+    }
+)
+
+// Incrementar un valor numerico
+db.productos.updateOne(
+    {_id:1},
+    {
+        $inc: {
+            precio: 100,
+        }
+    }
+)
+
+// Actualizar varios documentos
+
+
+// imprimir en consola
+db.productos.find()

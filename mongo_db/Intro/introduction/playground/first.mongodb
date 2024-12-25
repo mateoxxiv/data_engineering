@@ -1,0 +1,8 @@
+// Definir la base de datos
+use('sample_training')
+
+// Consultar los documentos de una colección en especifico
+db.zips.find({state:'NY'})
+
+// Contar los documentos que hay en una colección
+db.zips.find({state:'NY'}).count()

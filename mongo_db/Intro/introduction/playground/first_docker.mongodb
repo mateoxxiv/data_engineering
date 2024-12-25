@@ -1,0 +1,4 @@
+use("paltzi_store")
+
+// Consultar todos los documentos
+db.productos.find()
