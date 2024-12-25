@@ -4,3 +4,5 @@
 - No nos sirven apra tomar descionciones.
 
 ## OLAP
+- Sistema cenrealizado de información
+- Se crea un modelo facil de consumir
